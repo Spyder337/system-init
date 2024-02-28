@@ -3,6 +3,7 @@
 # Install Programs
 # C/CPP
 apt install -y gcc g++ build-essentials make cmake
+apt install -y git
 # Build2
 # Optional Clang
 
