@@ -1,18 +1,39 @@
 #! /usr/bin/bash
 
-# Configure Shell
-# Add Aliases
-# Install Oh my Zsh
-
 # Install Programs
 # C/CPP
-# GCC
-# Make
-# CMake
+apt install -y gcc g++ build-essentials make cmake
 # Build2
 # Optional Clang
-# Rust
-# Install Rustup: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # Python
 # Curl https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
-# Build
+curl -Olf https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
+tar -x Python-32.12.2.tgz python3
+cd python3
+./configure
+make
+make install
+cd ..
+
+# Rust
+# Install Rustup: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=http' --tlsv1.2 -sSL https://sh.rustup.rs | sh
+
+# Configure Shell
+
+#	Install Oh my Zsh
+apt install -y zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=$ZSH/custom/plugins
+
+#	Install Antigen
+export ANTIGEN=$ZSH_CUSTOM/antigen.zsh
+
+curl -L git.io/antigen > $ANTIGEN
+# or use git.io/antigen-nightly for the latest version
+
+#	Copy over config presets
+cp presets/.zshrc ~/.zshrc
