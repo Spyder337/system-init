@@ -1,0 +1,68 @@
+;;  Initialize package manager
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+(require 'company)
+;;  Add package requires
+(use-package company
+  :defer t
+  :init (add-hook 'prog-mode-hook 'company-mode)
+  )
+
+(require 'yafolding)
+(use-package yafolding
+  :defer t
+  :init (add-hook 'prog-mode-hook 'yafolding-mode)
+  )
+
+(defvar yafolding-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "<C-S-return>") #'yafolding-hide-parent-element)
+    (define-key map (kbd "<C-M-return>") #'yafolding-toggle-all)
+    (define-key map (kbd "<C-return>") #'yafolding-toggle-element)
+    map
+    )
+  )
+
+;;  Variables
+(setq custom-tab-width 2)
+(setq sh-basic-offset custom-tab-width
+      sh-indentation custom-tab-width
+      )
+
+;;  Tab Functions
+(defun disable-tabs () (setq indent-tabs-mode nil))
+(defun enable-tabs ()
+  (local-set-key (kbd "TAB") 'tab-to-tab-stop)
+  (setq indent-tabs-mode t)
+  (setq tab-width custom-tab-width)
+  )
+
+;;  Make backspace delete the tab instead of space
+(setq backward-delete-char-untabify-method 'hungry)
+
+;;  Disable indenting previous line on return
+(setq-default electric-indent-inhibit t)
+
+;;  Hooks
+;;    prog-mode-hook hooks to almost all code files.
+(add-hook 'prog-mode-hook 'enable-tabs)
+
+;;    lisp-mode-hook is for only lisp files.
+(add-hook 'lisp-mode-hook 'disable-tabs)
+(add-hook 'emacs-lisp-mode-hook 'disable-tabs)
+
+;;  Package Manager Variables
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(company)))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  )
