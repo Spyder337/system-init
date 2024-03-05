@@ -110,10 +110,12 @@ function aliases-init() {
 function ssh-init() {
 	if [[ -z "$SSH_AUTH_SOCK" ]]; then
     eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_*
+		ssh-add
+		ssh-add ~/.ssh/id_git
     ssh -T git@github.com
 	else
-    ssh-add ~/.ssh/id_*
+		ssh-add
+    ssh-add ~/.ssh/id_git
     ssh -T git@github.com
 	fi
 }
