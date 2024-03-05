@@ -78,7 +78,7 @@ function ppy() {
 
 function aliases-init() {
 	alias i="sudo apt install -y"
-#   File System
+	#   File System
 	alias l="ls -A"
 	alias lf="ls -A -f"
 	alias ld="ls -A -d"
@@ -86,19 +86,19 @@ function aliases-init() {
 	alias ta="tree -a -I '$IGNORE_FLAG_DIRS'"
 	alias td="tree -a -d -I '$IGNORE_FLAG_DIRS'"
 	alias rt="rm -f $~"
-#   Grep
+	#   Grep
 	alias hg="history | grep"
-#   Configs
+	#   Configs
 	alias shcfg="emacs ~/.zshrc"
 	alias rld="omz reload"
-#   Cargo
+	#   Cargo
 	alias cb="cargo clean;cargo build"
 	alias cf="cargo clippy --fix"
 	alias cr="cargo run"
-#   Python
+	#   Python
 	alias py="python3"
 	alias pv="pipenv run python"
-#   ENVIRONMENT VARIABLES
+	#   ENVIRONMENT VARIABLES
 	#	Python pip install dir.
 	export PATH=$PATH:/home/devtoast/.local/bin
 	#	Pipenv in project folder
