@@ -21,12 +21,10 @@ flag that determines whether or not to install a list of packages.
 │   ├── elpa
 │   └── init.el
 ├── .zshrc
-└── scripts
-    └── data
-        ├── user_data.json
-        └── packages.json
+├── scripts
+├── user_data.json
+└── packages.json
 ```
 
 # Todo
-- [ ] Create program installation scripts
-- [ ] Add more user configs
+- [ ] 
